@@ -14,6 +14,8 @@
    
    * Garbage collector promises that it will never claim live objects but no promises about dead objects
 
+  <img src="images/introduction.png" center="ture" width="1500">
+
     
    
 # Note:
@@ -71,3 +73,17 @@
     * Remove Dead objects from fromspace and allocate objects in freed-fromspace
 
     <img src="images/Copying_GC_3.png" center="ture" width="1500">
+
+# Generational Garbage Collector:
+
+  * Maintain different generations for memory
+    * Young Generation (Garbage Collection on Young generation -> Minor Collection)
+      * Eden
+      * S0 (Survivor)
+      * S1 (Survivor)
+    * Old Generation (Garbage Collection on Old Generation -> Major Collection)
+
+  * Long living objects 'promoted' to a different generation (after configured number of minor collectiosn)
+
+  <img src="images/After_Generational_Minor_Collection.png" center="ture" width="1500">
+  <img src="images/Before_Generational_Minor_Collection.png" center="ture" width="1500">
