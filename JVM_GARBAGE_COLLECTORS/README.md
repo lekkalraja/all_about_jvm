@@ -41,3 +41,14 @@
       * COM for example had AddRef and Release calls for objects
       * When count hit's zero, object can be freed
       * Problems with circular references
+
+# Mark And Sweep Garbage Collector:
+
+    ## Mark Phase that identifies the objects that are still in use (Rootset -> Stack (Per Thread))
+    <img src="Mark_Phase.png" center="ture" width="1500">
+    
+    ## Sweep Phase to remove unused objects
+    <img src="Sweep_Phase.png" center="ture" width="1500">
+
+    ## Compact Phase to compact the memory (Physical memory will change internally)
+    <img src="Compact_Phase.png" center="ture" width="1500">
