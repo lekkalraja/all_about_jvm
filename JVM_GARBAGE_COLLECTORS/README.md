@@ -14,7 +14,7 @@
    
    * Garbage collector promises that it will never claim live objects but no promises about dead objects
 
-    <img src="image-1.png" center="ture" width="1500">
+    
    
 # Note:
     * Used Java-11 for Demo's
@@ -36,7 +36,7 @@
 
 # Refernce Counting Garbage Collector:
    
-   <img src="reference_counting_gc.png" center="ture" width="1500">
+   <img src="images/reference_counting_gc.png" center="ture" width="1500">
 
     ## Onus on client to call methods when allocating/freeing memory
       * COM for example had AddRef and Release calls for objects
@@ -46,12 +46,28 @@
 # Mark And Sweep Garbage Collector:
 
   * Mark Phase that identifies the objects that are still in use (Rootset -> Stack (Per Thread))
-    <img src="Mark_Phase.png" center="ture" width="1500">
+    <img src="images/Mark_Phase.png" center="ture" width="1500">
     
   * Sweep Phase to remove unused objects
     
-    <img src="Sweep_Phase.png" center="ture" width="1500">
+    <img src="images/Sweep_Phase.png" center="ture" width="1500">
 
   * Compact Phase to compact the memory (Physical memory will change internally)
   
-    <img src="Compact_Phase.png" center="ture" width="1500">
+    <img src="images/Compact_Phase.png" center="ture" width="1500">
+
+# Copying Garbage Collector:
+
+  * Uses different spaces to manage memory
+  
+    * Allocates memory in `fromspace` and may follow mark&sweep to identify dead objects
+  
+    <img src="images/Copying_GC_1.png" center="ture" width="1500">
+
+    * Copy all the live objects from `fromspace to Tospace`
+
+    <img src="images/Copying_GC_2.png" center="ture" width="1500">
+
+    * Remove Dead objects from fromspace and allocate objects in freed-fromspace
+
+    <img src="images/Copying_GC_3.png" center="ture" width="1500">
