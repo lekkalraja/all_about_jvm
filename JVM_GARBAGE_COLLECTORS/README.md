@@ -11,7 +11,8 @@
       ` Employee emp = getEmployee()`
    * use with confidence: Objects will not vanish or become corrupt behind your back
       ` emp.incSalary(amount)`
-   # Garbage collector promises that it will never claim live objects but no promises about dead objects
+   
+   * Garbage collector promises that it will never claim live objects but no promises about dead objects
 
     <img src="image-1.png" center="ture" width="1500">
    
@@ -44,11 +45,13 @@
 
 # Mark And Sweep Garbage Collector:
 
-    ## Mark Phase that identifies the objects that are still in use (Rootset -> Stack (Per Thread))
+  * Mark Phase that identifies the objects that are still in use (Rootset -> Stack (Per Thread))
     <img src="Mark_Phase.png" center="ture" width="1500">
     
-    ## Sweep Phase to remove unused objects
+  * Sweep Phase to remove unused objects
+    
     <img src="Sweep_Phase.png" center="ture" width="1500">
 
-    ## Compact Phase to compact the memory (Physical memory will change internally)
+  * Compact Phase to compact the memory (Physical memory will change internally)
+  
     <img src="Compact_Phase.png" center="ture" width="1500">
