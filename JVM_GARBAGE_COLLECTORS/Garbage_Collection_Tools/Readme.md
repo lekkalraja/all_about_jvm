@@ -39,3 +39,23 @@
     Pool Names : 
         Par Eden Space  Par Survivor Space      CMS Old Gen **
     ```
+
+# JSTAT
+
+### Command line tool provided with the JVM to monitor GC locally as well remotely
+
+** `jstat -option <java-pid> <interval> <count>`**
+
+```
+> javac AllocationOverwrite.java
+> java AllocationOverwrite
+
+> jstat -gcutil 11020
+> jstat -gccapacity 11020
+> jstat -gccause 11020
+
+```
+
+# NOTE : KEEP IN MIND THAT MEMORY ALLOCATION'S WILL ALSO PLAY BIG ROLE. WE DO HAVE POINTER BASED ALLOCATION'S IN OLD GC'S WHERE AS IN G1GC WE DO HAVE FRAGMENTATIONS. CHOOSE APPROPRIATLEY.
+
+#### Reference : https://docs.oracle.com/en/java/javase/15/docs/specs/man/jstat.html
