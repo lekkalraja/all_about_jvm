@@ -106,3 +106,74 @@
 <img src="images/cardTable.png" center="ture" width="1500"> <br>
 
 <img src="images/cardtable-1.png" center="ture" width="1500"> <br>
+
+# Different Garbage Collectors
+
+* Serial Generational Collector `java -XX:+UseSerialGC`
+* Parallel for young space, serial for old space generational collector ` java -XX:+UseParallelGC`
+* Parallel young and old space generatinal collector ` java -XX:+UseParallelOldGC`
+* Concurrent mark sweep with serial young space collector ` java -XX:+UseConcMarkSweepGC` <br>
+` java -XX:-UseParNewGC`
+* Concurrent mark sweep with parallel young space collector `java -XX:+UseConcMarkSweepGC`
+
+# Serial Collector
+*   Single Threaded (Stop the world i.e. pause the app)
+*   Mark and sweep
+*   OK for small applications running on the client
+
+# Parallel Collector
+* Multiple Threads for minor collection
+* Single thread for major collection
+* Same process as Serial
+* Use on servers
+  
+# Parallel Old Collector
+*   Multiple threads for minor and major collections
+*   Preferred over ParallelGC
+
+# Concurrent Mark And Sweep
+
+*   Deprecated from JAVA-9
+*   Only Collects old space
+*   No longer 'bump the pointer'
+*   Causes Heap Fragmentation
+*   Designed to be lower latency
+    ## Concurrent Mark Sweep Details
+    * Initial Mark Phase (Stop the world): 
+        * Mark Objects in the old generation reachable from the root references
+    * Concurrent mark Phase (Concurrent):
+        * Traverse object graph looking for the live objects, any allocations made during this phase are automatically marked as live (use write barrier)
+    * Remark Phase (Stop the world) :
+        * Finds objects created after the previous phase stopped
+    * Concurrent Sweep Phase (Concurrent) : 
+        * Collects objects
+    * Resetting Phase (Concurrent) :
+        * Get ready for the next run
+
+# G1 Collector
+*   New in Java 6
+    *   Officially supported in Java 7
+    *   Is a compacting collector
+    *   Planned as a replacement for CMS
+        *   Default 'server' collector in Java 11
+    * Meant for server applications
+      * Running on multiprocessor machines with large memories
+    * Breaks heap into regions
+      * Still has concept of Eden, Survivor and Tenured (Old) spaces and similarly
+
+<img src="images/G1_Memory_layout.png" center="ture" width="1500"> <br>
+
+*   Objects are 'evacuated'
+    *   Moved/Copied between regions
+
+# Which Collector Should use ?
+
+*   No Easy answer to this question
+*   Java offers a mixture of garbage collectors From Serial to G1
+*   Picking a collector is not a simple job
+*   Profile the application under as close to production load as possible
+*   Test under the different garbage collectors
+
+# References
+*   https://docs.oracle.com/en/java/javase/11/gctuning/index.html
+*   https://www.oracle.com/technetwork/tutorials/tutorials-1876574.html
