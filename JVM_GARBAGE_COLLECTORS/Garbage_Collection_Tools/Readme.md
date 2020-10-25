@@ -78,3 +78,23 @@
   <img src="images/visualvm_spaces.png" center="ture" width="1500">
 
   <img src="images/visualvm_graphs.png" center="ture" width="1500">
+
+# Finding SoftLeaks (Memory Leaks)
+
+* Get HeapDump from a VisualVm or from commandLine option
+
+<img src="images/visualvm_heapdump.png" center="ture" width="1500">
+
+* There are several ways to get HeapDump using java tools.
+
+ `java -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=<file-or-dir-path>`
+
+* To Analyse the HeapDump download Memory Analyzer (MAT) (Eclipse Memory Analyzer)
+
+<img src="images/memory_analyser_1.png" center="ture" width="1500">
+<img src="images/memory_analyser_2.png" center="ture" width="1500">
+<img src="images/memory_analyser_3.png" center="ture" width="1500">
+<img src="images/memory_analyser_4.png" center="ture" width="1500">
+<img src="images/memory_analyser_5.png" center="ture" width="1500">
+<img src="images/memory_analyser_6.png" center="ture" width="1500">
+<img src="images/memory_analyser_7.png" center="ture" width="1500">
