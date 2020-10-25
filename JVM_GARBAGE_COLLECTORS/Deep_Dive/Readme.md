@@ -78,3 +78,31 @@
     *   Java use Thread Local Allocation Buffers (TLABS)
     *   Each thread gets it's own buffer in the Eden space
     *   No locking required
+
+# What Does Live Mean ?
+
+* Live Roots :
+  * From Stack frames (Root Set)
+  * Static Variables (Metaspace/permanent Gen)
+  * Others such as JNI (Java Native Interface) and synchronization 'monitors'
+  * References from live rooted objects are followed to other objects
+
+### What about references from old Generation to Young ?
+
+<img src="images/references_from_old_to_young.png" center="ture" width="1500"> <br>
+
+*   This is an issue -> Young GC has to scan 'old' space
+*   Sort of defeats the purpose
+*   Introduced **CardTable**
+  
+# CardTable
+
+* Each write to a reference to a young object from old space goes through a write barrier
+* This write barrier updates a card table entry
+* One entry per 512 bytes of memory
+* Minor GC scans CardTable looking for the areas that contain references instead of looking whole old space
+* Load that memory and follow the reference
+
+<img src="images/cardTable.png" center="ture" width="1500"> <br>
+
+<img src="images/cardtable-1.png" center="ture" width="1500"> <br>
