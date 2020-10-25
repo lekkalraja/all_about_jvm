@@ -59,3 +59,22 @@
 # NOTE : KEEP IN MIND THAT MEMORY ALLOCATION'S WILL ALSO PLAY BIG ROLE. WE DO HAVE POINTER BASED ALLOCATION'S IN OLD GC'S WHERE AS IN G1GC WE DO HAVE FRAGMENTATIONS. CHOOSE APPROPRIATLEY.
 
 #### Reference : https://docs.oracle.com/en/java/javase/15/docs/specs/man/jstat.html
+
+# VisualVM
+* Provided as part of the JDK, also download it as a separate tool 
+  * [text](https://visualvm.github.io/)
+* Open VisualVm and attach java process for it to view/monitor space allocations as well garbage collection details
+  
+  <img src="images/visualvm_monitor.png" center="ture" width="1500">
+
+  <img src="images/visualvm_heap.png" center="ture" width="1500">
+
+  <img src="images/visualvm_metaspace.png" center="ture" width="1500">
+
+  <img src="images/visualvm_gc_plugin.png" center="ture" width="1500">
+
+  <img src="images/visualvm_spaces_graphs.png" center="ture" width="1500">
+
+  <img src="images/visualvm_spaces.png" center="ture" width="1500">
+
+  <img src="images/visualvm_graphs.png" center="ture" width="1500">
